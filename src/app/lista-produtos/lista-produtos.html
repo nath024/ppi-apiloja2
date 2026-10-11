@@ -1,0 +1,16 @@
+<app-carrinho />
+
+<div class="lista">
+  @for (produto of produtos(); track produto.id) {
+    <div class="card">
+      <h3>{{ produto.nome }}</h3>
+      <p>{{ produto.descricao }}</p>
+      <p>R$ {{ produto.preco }}</p>
+
+      <a [routerLink]="['/produtos', produto.id]">Ver detalhes</a>
+      <button type="button" (click)="adicionarAoCarrinho(produto)">
+        Adicionar ao carrinho
+      </button>
+    </div>
+  }
+</div>

@@ -1,0 +1,25 @@
+<a routerLink="/">← Continuar comprando</a>
+
+<h2>Carrinho de compras</h2>
+
+@for (item of itens(); track item.id) {
+  <div class="card">
+    <h3>{{ item.produto.nome }}</h3>
+    <p>Preço: {{ item.produto.preco | currency:'BRL' }}</p>
+    <p>Subtotal: {{ item.produto.preco * item.quantidade | currency:'BRL' }}</p>
+
+    <button type="button" (click)="carrinhoService.removerItem(item.id)">
+      Excluir
+    </button>
+
+    <div class="quantidade">
+      <button type="button" (click)="carrinhoService.diminuirQuantidade(item.id)">-</button>
+      <span>{{ item.quantidade }}</span>
+      <button type="button" (click)="carrinhoService.aumentarQuantidade(item.id)">+</button>
+    </div>
+  </div>
+} @empty {
+  <p>Seu carrinho está vazio.</p>
+}
+
+<h3>Total da compra: {{ total() | currency:'BRL' }}</h3>
