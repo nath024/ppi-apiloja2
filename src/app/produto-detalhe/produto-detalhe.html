@@ -1,0 +1,7 @@
+ 
+ @if(produto()) {   
+    <p>Nome:  {{produto()?.nome}}</p>
+    <p>Preço: {{produto()?.preco}}</p>
+ } @else {
+    <p>Produto não encontrado!</p>
+ } 
